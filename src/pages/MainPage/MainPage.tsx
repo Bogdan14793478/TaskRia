@@ -19,8 +19,6 @@ const MainPage = () => {
       if (countDistY > 5000) return;
       if (e.pageY > countDistY) {
         setTimeout(() => {
-          console.log(infoAboutFilms, "infoAboutFilms");
-          console.log("HI");
           setInfoAboutFilms([...infoAboutFilms, ...data]);
         }, 120);
         setCountY(countDistY + 1000);

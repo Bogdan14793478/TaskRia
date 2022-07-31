@@ -37,7 +37,7 @@ const LoginPage = () => {
   }
 
   function redirectToMainPage() {
-    navigate(`/`);
+    navigate(`/home`);
   }
 
   function deepEqual(obj1: AuthFormData, obj2: string) {

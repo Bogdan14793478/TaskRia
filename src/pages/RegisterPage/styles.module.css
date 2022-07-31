@@ -94,10 +94,54 @@ button {
 
 .redirectToLogin {
   width: 150px;
-  background-color: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 
-/* @media only screen and (max-width: 600px) { */
-/* body {
-    background:url(https://source.unsplash.com/1080x2400?sunset+birdeye+ocean);
+/* @media (max-width: 480px) {
+  form {
+    width: 200px;
+  }
+}
+
+@media (max-height: 440px) {
+  .backFont {
+    width: 200vw;
+    height: 200vh;
+  }
+  form {
+    min-height: 100px;
+  }
+  button {
+    margin-top: 20px;
+  }
+} */
+
+@media (max-height: 760px) {
+  button {
+    margin-top: 20px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    width: 200px;
+  }
+  /* button {
+    margin-top: 5px;
   } */
+}
+
+@media (max-width: 376px) {
+  form {
+    width: 200px;
+    padding: 10px;
+  }
+  input {
+    width: 90%;
+  }
+  button {
+    margin-top: 0;
+  }
+}

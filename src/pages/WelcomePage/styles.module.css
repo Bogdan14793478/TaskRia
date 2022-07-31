@@ -8,7 +8,7 @@
 
 form {
   min-height: 380px;
-  width: 400px;
+  max-width: 400px;
   background-color: rgba(255, 255, 255, 0.03);
   position: absolute;
   transform: translate(-50%, -50%);
@@ -45,12 +45,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-label {
-  display: block;
-  margin-top: 30px;
-  font-size: 16px;
-  font-weight: 500;
-}
+
 .positionBtn {
   display: flex;
   flex-direction: column;
@@ -58,11 +53,35 @@ label {
   align-items: center;
 }
 .redirect {
+  margin-top: 30px;
   width: 150px;
   background-color: none;
 }
 
-/* @media only screen and (max-width: 600px) { */
-/* body {
-      background:url(https://source.unsplash.com/1080x2400?sunset+birdeye+ocean);
-    } */
+@media (max-width: 480px) {
+  form {
+    width: 200px;
+  }
+}
+
+@media (max-height: 440px) {
+  form {
+    min-height: 100px;
+  }
+  button {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 376px) {
+  form {
+    width: 200px;
+    padding: 10px;
+  }
+  input {
+    width: 90%;
+  }
+  button {
+    margin-top: 0px;
+  }
+}

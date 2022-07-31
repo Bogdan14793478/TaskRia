@@ -1,12 +1,15 @@
 import React from "react";
-import backImg from "../../Image/backgroundForRegister.jpg";
-import classes from "./styles.module.css";
 import { Form, Formik, FormikHelpers } from "formik";
-import * as Yup from "yup";
-import Errors from "../../components/ErrorsForAuth/ErrorsForAuth";
-import { passwordExp, setToStorage } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+
+import Errors from "../../components/ErrorsForAuth/ErrorsForAuth";
+import backImg from "../../Image/backgroundForRegister.jpg";
+
+import { passwordExp, setToStorage } from "../../utils/helpers";
 import { AuthFormData } from "../../utils/interface";
+
+import classes from "./styles.module.css";
 
 const initialValues: AuthFormData = {
   name: "",
@@ -18,7 +21,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email("Enter valid email").required("Required"),
   password: Yup.string()
     .min(6, "It`s to short")
-    .max(6, "It`s to lond")
+    .max(6, "It`s to long")
     .matches(
       passwordExp,
       "Password length - 6, must have one Upper, lower case, number"

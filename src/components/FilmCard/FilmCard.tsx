@@ -22,7 +22,7 @@ const MyselfCard: React.FC<ItemData> = ({ item }) => {
   return (
     <div className={classes.card}>
       <div className={classes.imageCard}>
-        <img src={data.Images[0]} className={classes.image} alt="" />
+        <img src={data.Images[0]} className={classes.image} alt="/" />
       </div>
       <p className={classes.cardTitle}>{item.Title}</p>
       {isAuth ? (
