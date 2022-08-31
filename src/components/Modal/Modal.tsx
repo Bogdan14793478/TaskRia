@@ -15,7 +15,6 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = ({ active, setActive, children, openPage }) => {
-  console.log(children, "children");
   return (
     <div
       className={

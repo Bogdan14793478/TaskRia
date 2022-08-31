@@ -20,7 +20,6 @@ const Navbar = () => {
   let navigate = useNavigate();
 
   const chooseAdressLink = (page: any) => {
-    console.log(page, "page");
     if (page.name === NamePage.popularСars) navigate(LinkPage.popularСars);
     if (page.name === NamePage.carShowrooms) navigate(LinkPage.carShowrooms);
     if (page.name === NamePage.testDrive) navigate(LinkPage.testDrive);
