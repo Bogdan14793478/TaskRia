@@ -1,95 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import { LinkPage, NamePage } from "./interface";
+import Logo from "../../Image/AUTO.png";
+import Modal from "../Modal/Modal";
 
-import { removeFromStorage, getFromStorage } from "../../utils/helpers";
+import classes from "./styles.module.css";
 
-const styles = {
-  toolbar: {
-    display: "flex",
-    justifyContent: "space-around",
-  },
-};
+const pages = [
+  { name: "Популярні авто", id: 1 },
+  { name: "Автосалони", id: 2 },
+  { name: "Тест-драйви", id: 3 },
+  { name: "Скоро у продажу", id: 4 },
+];
 
-export default function Navbar() {
-  const [statusAuth, setStatusAuth] = useState(false);
-
+const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const [activeChooseMenu, setActiveChooseMenu] = useState<number | null>(null);
   let navigate = useNavigate();
 
-  function redirectToLoginPage() {
-    navigate(`/login`);
-  }
-
-  function redirectToMainPage() {
-    navigate("/");
-  }
-
-  const outLogin = () => {
-    removeFromStorage("isAuth");
-    navigate(`/login`);
+  const chooseAdressLink = (page: any) => {
+    console.log(page, "page");
+    if (page.name === NamePage.popularСars) navigate(LinkPage.popularСars);
+    if (page.name === NamePage.carShowrooms) navigate(LinkPage.carShowrooms);
+    if (page.name === NamePage.testDrive) navigate(LinkPage.testDrive);
+    if (page.name === NamePage.sellingSoon) navigate(LinkPage.sellingSoon);
   };
-
-  const takeInfoUser = getFromStorage("isRegister");
-
-  if (takeInfoUser) {
-    var { name: UserName } = JSON.parse(takeInfoUser);
-  }
-
-  const takeInfoAboutAuth = () => {
-    const statusAuth = getFromStorage("isAuth");
-    statusAuth ? setStatusAuth(true) : setStatusAuth(false);
-  };
-
-  useEffect(() => {
-    takeInfoAboutAuth();
-  }, []);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ position: "fixed", top: "0" }}>
-        <Toolbar sx={styles.toolbar}>
-          {statusAuth && (
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                marginRight: "40px",
-              }}
-              onClick={redirectToMainPage}
-            >
-              Hello, {UserName}
-            </Typography>
-          )}
-
-          {!statusAuth && (
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                marginRight: "40px",
-              }}
-              onClick={redirectToLoginPage}
-            >
-              Please, do LogIn
-            </Typography>
-          )}
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              marginRight: "40px",
-            }}
-            onClick={outLogin}
-          >
-            Do you want Out?
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <div className={classes.wrapper}>
+      <img src={Logo} alt="" className={classes.logoSmall} />
+      <div className={classes.container}>
+        <img src={Logo} alt="" className={classes.logoBig} />
+        <div className={classes.menuChoosePage}>
+          <div className={classes.choosePage}>
+            {pages.map((page) => (
+              <span
+                key={page.id}
+                className={
+                  page.id === activeChooseMenu
+                    ? [classes.chooseLink, classes.activeLink].join(" ")
+                    : classes.chooseLink
+                }
+                onClick={() => {
+                  chooseAdressLink(page);
+                  setActiveChooseMenu(page.id);
+                }}
+              >
+                {page.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className={classes.entryBtn} onClick={() => alert("Ви ввійшли")}>
+        Увійти
+      </div>
+      <div className={classes.entryBtnMeny} onClick={() => setShowMenu(true)}>
+        Mеню
+      </div>
+      <Modal
+        active={showMenu}
+        setActive={setShowMenu}
+        children={pages}
+        openPage={chooseAdressLink}
+      />
+    </div>
   );
-}
+};
+
+export default Navbar;

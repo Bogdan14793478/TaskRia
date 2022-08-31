@@ -1,0 +1,91 @@
+.wrapper {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoSmall {
+  display: none;
+}
+
+.logoBig {
+  margin-right: 51px;
+}
+.menuChoosePage {
+  display: flex;
+}
+
+.choosePage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 48px;
+}
+
+.chooseLink {
+  color: #1f2024;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.chooseLink:hover {
+  bottom: 3px;
+}
+
+.activeLink {
+  font-weight: 700;
+}
+
+.entryBtn {
+  display: block;
+}
+
+.entryBtnMeny {
+  display: none;
+}
+@media (max-width: 800px) {
+  .wrapper {
+    padding: 16px;
+  }
+
+  .container {
+    display: none;
+  }
+
+  .logoSmall {
+    display: block;
+  }
+
+  .entryBtn {
+    display: none;
+  }
+
+  .entryBtnMeny {
+    display: block;
+  }
+  /* .menuBtn {
+    display: block;
+    margin-top: 11px;
+  }
+
+  .linkBigScreen {
+    display: none;
+  }
+
+  .avatarBtn {
+    display: none;
+  } */
+}

@@ -1,21 +1,20 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import LoginPage from "./pages/LoginPage/LoginPage";
-import MainPage from "./pages/MainPage/MainPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import { Navbar } from "./components";
+import { PopularСars, CarShowrooms, TestDrive, SellingSoon } from "./pages";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/home" element={<MainPage />} />
+        <Route path="/" element={<PopularСars />} />
+        <Route path="/carShowrooms" element={<CarShowrooms />} />
+        <Route path="/testDrive" element={<TestDrive />} />
+        <Route path="/sellingSoon" element={<SellingSoon />} />
       </Routes>
     </div>
   );
